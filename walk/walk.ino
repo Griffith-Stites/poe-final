@@ -45,8 +45,8 @@ void loop() {
   rotate1.write(10);
   rotate4.write(10);
   // 2 and 3 forward
-  rotate1.write(10);
-  rotate4.write(10);
+  rotate2.write(10);
+  rotate3.write(10);
   // 2 and 3 down
   lift2.write(10);
   lift3.write(10);
@@ -54,18 +54,11 @@ void loop() {
   lift1.write(10);
   lift4.write(10);
   // 2 and 3 backward
+  rotate2.write(10);
+  rotate3.write(10);
+  // 1 and 4 forward
   rotate1.write(10);
   rotate4.write(10);
 
   delay(3000);
 }
-
-// void printStatus(int sensor, int pan, int tilt) {
-//   // print the results to the Serial Monitor:
-//   Serial.print(sensorValue);
-//   Serial.print(',');
-//   Serial.print(pan);
-//   Serial.print(',');
-//   Serial.print(tilt);
-//   Serial.println();
-// }

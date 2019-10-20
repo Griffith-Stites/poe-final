@@ -20,34 +20,33 @@ Servo rotate4;
 void setup() {
   // initialize serial communications at 9600 bps:
   Serial.begin(9600);
-  //  lift1.attach(0);
-  rotate1.attach(10);
+  lift1.attach(5);
+  // rotate1.attach(1);
 
-  //  lift2.attach(2);
-  rotate2.attach(3);
+  lift2.attach(6);
+  // rotate2.attach(3);
 
-  //  lift3.attach(4);
-  rotate3.attach(5);
+  lift3.attach(10);
+  // rotate3.attach(5);
 
-  //  lift4.attach(7);
-  rotate4.attach(11);
+  lift4.attach(11);
+  // rotate4.attach(7);
 }
 
 void loop() {
   Serial.println("start");
-  // 1 and 4 backward
-  rotate1.write(130);
-  rotate4.write(130);
-  // 2 and 3 forward
-  rotate2.write(55);
-  rotate3.write(20);
+  // 1 and 4 down
+  lift1.write(10);
+  lift4.write(10);
+  // 2 and 3 up
+  lift2.write(10);
+  lift3.write(10);
+  // 2 and 3 down
+  lift2.write(10);
+  lift3.write(10);
+  // 1 and 4 up
+  lift1.write(10);
+  lift4.write(10);
 
-  delay(1000);
-  // 2 and 3 backward
-  rotate2.write(5);
-  rotate3.write(80);
-  // 1 and 4 forward
-  rotate1.write(80);
-  rotate4.write(180);
-  delay(1000);
+  delay(3000);
 }
