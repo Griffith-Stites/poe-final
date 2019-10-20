@@ -23,14 +23,14 @@ void setup() {
   lift1.attach(0);
   rotate1.attach(1);
 
-  lift1.attach(2);
-  rotate1.attach(3);
+  lift2.attach(2);
+  rotate2.attach(3);
 
-  lift1.attach(4);
-  rotate1.attach(5);
+  lift3.attach(4);
+  rotate3.attach(5);
 
-  lift1.attach(6);
-  rotate1.attach(7);
+  lift4.attach(6);
+  rotate4.attach(7);
 }
 
 void loop() {
@@ -56,7 +56,7 @@ void loop() {
   // 2 and 3 backward
   rotate1.write(10);
   rotate4.write(10);
-  
+
   delay(3000);
 }
 
