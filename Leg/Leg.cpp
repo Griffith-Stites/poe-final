@@ -7,8 +7,18 @@
 #include "Leg.h"
 #include "Servo.h"
 
-Leg::Leg(int liftPin, int rotatePin, int liftZero, int rotateZero)
+Leg::Leg(int liftPin, int rotatePin,
+  int liftDirection, int rotateDirection,
+  int liftZero, int rotateZero)
 {
+  /*
+  liftPin: pin for the servo that lifts the leg
+  rotatePin: pin for the servo that rotates the leg
+  liftDirection: -1 or 1 to flip the direction of the servo
+  rotateDirection: -1 or 1 to flip the direction of the servo
+  liftZero: the zero angle of the lift servo
+  rotateZero: the zero angle of the rotate servo
+  */
   Servo lift;
   Servo rotate;
   lift.attach(liftPin);
@@ -20,20 +30,20 @@ Leg::Leg(int liftPin, int rotatePin, int liftZero, int rotateZero)
 
 void Leg::forward()
 {
-  rotate.write(10);
+  rotate.write(rotateZero + 10);
 }
 
 void Leg::backward()
 {
-  rotate.write(10);
+  rotate.write(rotateZero + 10);
 }
 
 void Leg::up()
 {
-  lift.write(10);
+  lift.write(liftZero + 10);
 }
 
 void Leg::down()
 {
-  lift.write(10);
+  lift.write(rotateZero + 10);
 }

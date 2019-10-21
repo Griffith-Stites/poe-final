@@ -11,7 +11,7 @@
 class Leg
 {
   public: // can be accessed by code calling the class
-    Leg(int liftPin, int rotatePin, int liftZero, int rotateZero);
+    Leg(int liftPin, int rotatePin, int liftDirection, int rotateDirection, int liftZero, int rotateZero);
     void forward();
     void backward();
     void up();
