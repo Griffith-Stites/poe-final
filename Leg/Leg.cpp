@@ -23,27 +23,40 @@ Leg::Leg(int liftPin, int rotatePin,
   Servo rotate;
   lift.attach(liftPin);
   rotate.attach(rotatePin);
+  _liftDirection = liftDirection;
+  _rotateDirection = rotateDirection;
   _liftZero = liftZero;
   _rotateZero = rotateZero;
-  // need direction indicator for lift and rotate
 }
 
 void Leg::forward()
 {
-  rotate.write(rotateZero + 10);
+  rotate.write(angleCalc(_rotateZero, 10, _rotateDirection));
 }
 
 void Leg::backward()
 {
-  rotate.write(rotateZero + 10);
+  rotate.write(angleCalc(_rotateZero, -10, _rotateDirection));
 }
 
 void Leg::up()
 {
-  lift.write(liftZero + 10);
+  lift.write(angleCalc(_liftZero, 10, _liftDirection));
 }
 
 void Leg::down()
 {
-  lift.write(rotateZero + 10);
+  lift.write(angleCalc(_liftZero, 10, _liftDirection));
+}
+
+int Leg::angleCalc(int _zero, int _desired, int _d)
+{
+/*
+calculates angle
+_zero: zero angle
+_desired: desired angle
+_d: turning direction of the Servo
+*/
+int _angle = _zero + (_d*_desired);
+return _angle;
 }
