@@ -15,24 +15,25 @@ Leg::Leg(int liftPin, int rotatePin, int liftZero, int rotateZero)
   rotate.attach(rotatePin);
   _liftZero = liftZero;
   _rotateZero = rotateZero;
+  // need direction indicator for lift and rotate
 }
 
 void Leg::forward()
 {
-
+  rotate.write(10);
 }
 
 void Leg::backward()
 {
-
+  rotate.write(10);
 }
 
 void Leg::up()
 {
-
+  lift.write(10);
 }
 
 void Leg::down()
 {
-
+  lift.write(10);
 }
