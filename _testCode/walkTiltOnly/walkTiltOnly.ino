@@ -39,13 +39,14 @@ void loop() {
   lift1.write(10);
   lift4.write(10);
   // 2 and 3 up
-  lift2.write(10);
-  lift3.write(10);
+  lift2.write(80);
+  lift3.write(60);
+  delay(1000);
   // 2 and 3 down
-  lift2.write(10);
+  lift2.write(20);
   lift3.write(10);
   // 1 and 4 up
-  lift1.write(10);
+  lift1.write(50);
   lift4.write(10);
 
   delay(3000);
