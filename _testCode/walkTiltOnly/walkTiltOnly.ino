@@ -37,7 +37,7 @@ void loop() {
   Serial.println("start");
   // 1 and 4 down
   lift1.write(10);
-  lift4.write(10);
+  lift4.write(130);
   // 2 and 3 up
   lift2.write(80);
   lift3.write(60);
@@ -47,7 +47,7 @@ void loop() {
   lift3.write(10);
   // 1 and 4 up
   lift1.write(50);
-  lift4.write(10);
+  lift4.write(110);
 
   delay(3000);
 }
