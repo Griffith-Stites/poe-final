@@ -1,8 +1,5 @@
 #include <Servo.h> // Include the servo library
 
-int liftStatus = 0; // variable to store lift status (0: ground, 1: air)
-int rotateStatus = 0; // variable to store rotate status
-
 // create servo objects to control lift and rotation for each leg
 // front left
 Servo lift1;
@@ -36,31 +33,37 @@ void setup() {
 void loop() {
   Serial.println("start");
   // 1 and 4 down
-  lift1.write(10);
-  lift4.write(130);
+  lift1.write(105);
+  lift4.write(95);
   // 2 and 3 up
-  lift2.write(80);
-  lift3.write(60);
+  lift2.write(100);
+  lift3.write(110);
   delay(1000);
+
   // 1 and 4 backward
-  rotate1.write(130);
-  rotate4.write(130);
+  rotate1.write(110);
+  rotate4.write(70);
+
   // 2 and 3 forward
-  rotate2.write(55);
-  rotate3.write(20);
+  rotate2.write(90);
+  rotate3.write(90);
   delay(1000);
+
   // 2 and 3 down
-  lift2.write(20);
-  lift3.write(10);
+  lift2.write(80); // rotates opposite of 1 and 4
+  lift3.write(90); // rotates opposite of 1 and 4
+
   // 1 and 4 up
-  lift1.write(50);
-  lift4.write(110);
+  lift1.write(85);
+  lift4.write(75);
+
   delay(1000);
   // 2 and 3 backward
-  rotate2.write(5);
-  rotate3.write(80);
+  rotate2.write(70);
+  rotate3.write(110);
+
   // 1 and 4 forward
-  rotate1.write(80);
-  rotate4.write(180);
+  rotate1.write(80); // lower numbers rotate forward
+  rotate4.write(90);
   delay(1000);
 }
