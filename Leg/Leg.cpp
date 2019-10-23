@@ -29,24 +29,24 @@ Leg::Leg(int liftPin, int rotatePin,
   _rotateZero = rotateZero;
 }
 
-void Leg::forward()
+void Leg::forward(int angle)
 {
-  rotate.write(angleCalc(_rotateZero, 10, _rotateDirection));
+  rotate.write(angleCalc(_rotateZero, angle, _rotateDirection));
 }
 
-void Leg::backward()
+void Leg::backward(int angle)
 {
-  rotate.write(angleCalc(_rotateZero, -10, _rotateDirection));
+  rotate.write(angleCalc(_rotateZero, angle, _rotateDirection));
 }
 
-void Leg::up()
+void Leg::up(int angle)
 {
-  lift.write(angleCalc(_liftZero, 10, _liftDirection));
+  lift.write(angleCalc(_liftZero, angle, _liftDirection));
 }
 
-void Leg::down()
+void Leg::down(int angle)
 {
-  lift.write(angleCalc(_liftZero, 10, _liftDirection));
+  lift.write(angleCalc(_liftZero, angle, _liftDirection));
 }
 
 int Leg::angleCalc(int _zero, int _desired, int _d)
