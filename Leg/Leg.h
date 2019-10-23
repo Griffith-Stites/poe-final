@@ -17,6 +17,8 @@ class Leg
     void up();
     void down();
   private: // only within the class
+    int _liftDirection;
+    int _rotateDirection;
     int _liftZero;
     int _rotateZero;
 };
