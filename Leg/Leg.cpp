@@ -3,9 +3,12 @@
   Created by Maeve Stites, October 21, 2019.
 */
 
-#include "WProgram.h"
-#include "Leg.h"
+#include "Arduino.h"
 #include "Servo.h"
+#include "Leg.h"
+
+Servo lift;
+Servo rotate;
 
 Leg::Leg(int liftPin, int rotatePin,
   int liftDirection, int rotateDirection,
@@ -19,8 +22,6 @@ Leg::Leg(int liftPin, int rotatePin,
   liftZero: the zero angle of the lift servo
   rotateZero: the zero angle of the rotate servo
   */
-  Servo lift;
-  Servo rotate;
   lift.attach(liftPin);
   rotate.attach(rotatePin);
   _liftDirection = liftDirection;
@@ -31,25 +32,25 @@ Leg::Leg(int liftPin, int rotatePin,
 
 void Leg::forward(int angle)
 {
-  rotate.write(angleCalc(_rotateZero, angle, _rotateDirection));
+  rotate.write(Leg::_angleCalc(_rotateZero, angle, _rotateDirection));
 }
 
 void Leg::backward(int angle)
 {
-  rotate.write(angleCalc(_rotateZero, angle, _rotateDirection));
+  rotate.write(Leg::_angleCalc(_rotateZero, angle, _rotateDirection));
 }
 
 void Leg::up(int angle)
 {
-  lift.write(angleCalc(_liftZero, angle, _liftDirection));
+  lift.write(Leg::_angleCalc(_liftZero, angle, _liftDirection));
 }
 
 void Leg::down(int angle)
 {
-  lift.write(angleCalc(_liftZero, angle, _liftDirection));
+  lift.write(Leg::_angleCalc(_liftZero, angle, _liftDirection));
 }
 
-int Leg::angleCalc(int _zero, int _desired, int _d)
+int Leg::_angleCalc(int _zero, int _desired, int _d)
 {
 /*
 calculates angle
