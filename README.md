@@ -13,3 +13,5 @@ Repo for the code for our climby boiiii
 ## Adding Library
 1. Compile Leg library into Zip: "zip -r Leg.zip ./Leg/"
 2. Import into arduino: Sketch -> Include Library -> Add Zip Library
+
+Alternatively, one can manually move the library cpp and h file into the arduino library folder (root-> arduino -> libraries)
