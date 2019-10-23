@@ -38,7 +38,7 @@ void loop() {
   // 2 and 3 up
   lift2.write(100);
   lift3.write(110);
-  delay(1000);
+  delay(350);
 
   // 1 and 4 backward
   rotate1.write(110);
@@ -47,7 +47,7 @@ void loop() {
   // 2 and 3 forward
   rotate2.write(90);
   rotate3.write(90);
-  delay(1000);
+  delay(350);
 
   // 2 and 3 down
   lift2.write(80); // rotates opposite of 1 and 4
@@ -57,7 +57,7 @@ void loop() {
   lift1.write(85);
   lift4.write(75);
 
-  delay(1000);
+  delay(350);
   // 2 and 3 backward
   rotate2.write(70);
   rotate3.write(110);
@@ -65,5 +65,5 @@ void loop() {
   // 1 and 4 forward
   rotate1.write(80); // lower numbers rotate forward
   rotate4.write(90);
-  delay(1000);
+  delay(350);
 }
