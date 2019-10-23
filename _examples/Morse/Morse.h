@@ -7,7 +7,7 @@
 #ifndef Morse_h
 #define Morse_h
 
-#include "WProgram.h"
+#include "Arduino.h"
 
 class Morse
 {
@@ -20,4 +20,3 @@ class Morse
 };
 
 #endif
-

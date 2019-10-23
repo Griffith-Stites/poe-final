@@ -4,7 +4,7 @@
   Released into the public domain.
 */
 
-#include "WProgram.h"
+#include "Arduino.h"
 #include "Morse.h"
 
 Morse::Morse(int pin)
@@ -18,7 +18,7 @@ void Morse::dot()
   digitalWrite(_pin, HIGH);
   delay(250);
   digitalWrite(_pin, LOW);
-  delay(250);  
+  delay(250);
 }
 
 void Morse::dash()
@@ -28,4 +28,3 @@ void Morse::dash()
   digitalWrite(_pin, LOW);
   delay(250);
 }
-
