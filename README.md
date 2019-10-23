@@ -8,6 +8,8 @@ Repo for the code for our climby boiiii
 
 * Do not need separate up down, backward forward, functions. Just have tilt and rotate.
 
+* New library for just managing a servo. Such that sending 10 degrees to all motors will send all of them forward to the same point (should have zero and direction knowledge)
+
 ## Adding Library
 1. Compile Leg library into Zip: "zip -r Leg.zip ./Leg/"
 2. Import into arduino: Sketch -> Include Library -> Add Zip Library

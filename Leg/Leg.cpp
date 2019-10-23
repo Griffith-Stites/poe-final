@@ -59,5 +59,6 @@ _desired: desired angle
 _d: turning direction of the Servo
 */
 int _angle = _zero + (_d*_desired);
+// move math inside other stuff
 return _angle;
 }
