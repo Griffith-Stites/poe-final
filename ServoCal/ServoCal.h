@@ -17,7 +17,7 @@ class Leg
     int _pin;
     int _zero;
     int _dir;
-    Servo motor;
+    Servo _motor;
     int _angleCalc(int _zero, int _desired, int _d);
 };
 
