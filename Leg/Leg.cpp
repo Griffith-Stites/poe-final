@@ -7,8 +7,8 @@
 #include "Servo.h"
 #include "Leg.h"
 
-Servo lift;
-Servo rotate;
+Servo _lift;
+Servo _rotate;
 
 Leg::Leg(int liftPin, int rotatePin,
   int liftDirection, int rotateDirection,
@@ -22,8 +22,8 @@ Leg::Leg(int liftPin, int rotatePin,
   liftZero: the zero angle of the lift servo
   rotateZero: the zero angle of the rotate servo
   */
-  lift.attach(liftPin);
-  rotate.attach(rotatePin);
+  _lift.attach(liftPin);
+  _rotate.attach(rotatePin);
   _liftDirection = liftDirection;
   _rotateDirection = rotateDirection;
   _liftZero = liftZero;
@@ -32,22 +32,22 @@ Leg::Leg(int liftPin, int rotatePin,
 
 void Leg::forward(int angle)
 {
-  rotate.write(Leg::_angleCalc(_rotateZero, angle, _rotateDirection));
+  _rotate.write(Leg::_angleCalc(_rotateZero, angle, _rotateDirection));
 }
 
 void Leg::backward(int angle)
 {
-  rotate.write(Leg::_angleCalc(_rotateZero, angle, _rotateDirection));
+  _rotate.write(Leg::_angleCalc(_rotateZero, angle, _rotateDirection));
 }
 
 void Leg::up(int angle)
 {
-  lift.write(Leg::_angleCalc(_liftZero, angle, _liftDirection));
+  _lift.write(Leg::_angleCalc(_liftZero, angle, _liftDirection));
 }
 
 void Leg::down(int angle)
 {
-  lift.write(Leg::_angleCalc(_liftZero, angle, _liftDirection));
+  _lift.write(Leg::_angleCalc(_liftZero, angle, _liftDirection));
 }
 
 int Leg::_angleCalc(int _zero, int _desired, int _d)

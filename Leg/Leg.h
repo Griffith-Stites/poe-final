@@ -21,6 +21,8 @@ class Leg
     int _rotateDirection;
     int _liftZero;
     int _rotateZero;
+    Servo _lift;
+    Servo _rotate;
     int _angleCalc(int _zero, int _desired, int _d);
 };
 
