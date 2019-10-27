@@ -10,9 +10,8 @@
 Servo _lift;
 Servo _rotate;
 
-Leg::Leg(int liftPin, int rotatePin,
-  int liftDirection, int rotateDirection,
-  int liftZero, int rotateZero)
+Leg::Leg(int liftPin, int liftZero, int liftDirection,
+  int rotatePin, int rotateZero, int rotateDirection)
 {
   /*
   liftPin: pin for the servo that lifts the leg
