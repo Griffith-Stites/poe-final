@@ -10,6 +10,8 @@ Repo for the code for our climby boiiii
 
 * New library for just managing a servo. Such that sending 10 degrees to all motors will send all of them forward to the same point (should have zero and direction knowledge)
 
+* Instead of library just have an angle calc function in the file
+
 ## Adding Library
 1. Compile Leg library into Zip: "zip -r Leg.zip ./Leg/"
 2. Import into arduino: Sketch -> Include Library -> Add Zip Library
