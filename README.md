@@ -12,6 +12,20 @@ Repo for the code for our climby boiiii
 
 * Instead of library just have an angle calc function in the file
 
+* New movement for the V2:
+Forward:
+1. Release 1 and 2 magnets
+2. Slide 1 and 2 forward
+3. Attach 1 and 2 magnets
+4. Release 3 and 4 magnets
+5. Slide 3 and 4 forward
+6. Attach 3 and 4
+
+* New rough code
+1. Rotate only code
+2. Forward walking code
+
+Turning: Release them, slide them, attach them, move
 ## Adding Library
 1. Compile Leg library into Zip: "zip -r Leg.zip ./Leg/"
 2. Import into arduino: Sketch -> Include Library -> Add Zip Library
