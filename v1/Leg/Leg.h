@@ -7,6 +7,7 @@
 #define Leg_h
 
 #include "Arduino.h"
+#include "Servo.h" // do I need to include servo in my header file?
 
 class Leg
 {
