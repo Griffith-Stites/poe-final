@@ -6,6 +6,8 @@ Repo for the code for our climby boiiii
 
 * Way to track zeros, direction, etc
 
+* Library for new robot. Should be able to take an accelerometer input and turn to an angle.
+
 Turning: Release them, slide them, attach them, move
 
 ## Adding Library
