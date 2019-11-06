@@ -4,10 +4,10 @@
 // initialize all the legs
 // Leg(int liftPin, int liftZero, int liftDirection,
 // int rotatePin, int rotateZero, int rotateDirection)
-Leg leg1(2, 105, -1, 3, 110, 1)
-Leg leg2(4, 80, 1, 5, 90, 1)
-Leg leg3(6, 90, 1, 7, 90, -1)
-Leg leg4(7, 95, -1, 8, 90, 1)
+Leg leg1(2, 105, -1, 3, 110, 1);
+Leg leg2(4, 80, 1, 5, 90, 1);
+Leg leg3(6, 90, 1, 7, 90, -1);
+Leg leg4(7, 95, -1, 8, 90, 1);
 
 void setup() {
   // initialize serial communications at 9600 bps:

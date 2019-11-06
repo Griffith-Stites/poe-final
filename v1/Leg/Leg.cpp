@@ -27,26 +27,31 @@ Leg::Leg(int liftPin, int liftZero, int liftDirection,
   _rotateDirection = rotateDirection;
   _liftZero = liftZero;
   _rotateZero = rotateZero;
+  Serial.println("initializing");
 }
 
 void Leg::forward(int angle)
 {
   _rotate.write(Leg::_angleCalc(_rotateZero, angle, _rotateDirection));
+  Serial.println("forward");
 }
 
 void Leg::backward(int angle)
 {
   _rotate.write(Leg::_angleCalc(_rotateZero, angle, _rotateDirection));
+  Serial.println("backward");
 }
 
 void Leg::up(int angle)
 {
   _lift.write(Leg::_angleCalc(_liftZero, angle, _liftDirection));
+  Serial.println("up");
 }
 
 void Leg::down(int angle)
 {
   _lift.write(Leg::_angleCalc(_liftZero, angle, _liftDirection));
+  Serial.println("down");
 }
 
 int Leg::_angleCalc(int _zero, int _desired, int _d)
@@ -58,6 +63,8 @@ _desired: desired angle
 _d: turning direction of the Servo
 */
 int _angle = _zero + (_d*_desired);
+Serial.println("angleCalc");
+Serial.println(_angle);
 // move math inside other stuff
 return _angle;
 }
