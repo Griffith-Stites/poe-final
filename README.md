@@ -1,17 +1,23 @@
-# poe-final
-Repo for the code for our climby boiiii
+# Jelly Doughnuts' Wall Climbing Robot
 
-## To Do
-* Calibration script (press a button when the sweeping leg is perp to the robot - then we can specify how much we want toe leg to move on either side of that) - zero should be at 90
+SHORT EXPLANATION OF OUR FINAL PRODUCT
 
-* Way to track zeros, direction, etc
+VIDEO OF OUR ROBOT WORKING
 
-* Library for new robot. Should be able to take an accelerometer input and turn to an angle.
+## Leg Mechanism
 
-Turning: Release them, slide them, attach them, move
+### Magnets
 
-## Adding Library
-1. Compile Leg library into Zip: "zip -r Leg.zip ./Leg/"
-2. Import into arduino: Sketch -> Include Library -> Add Zip Library
+### Sliders
 
-Alternatively, one can manually move the library cpp and h file into the arduino library folder (root-> arduino -> libraries)
+## Code
+
+## The Team
+
+
+#### Notes (DELETE LATER)
+* Can have another page for explanation of how the mechanisms work.
+
+* Should have a page explaining the progression of design and process.
+
+* Page about math for various stages of the project
