@@ -3,7 +3,9 @@ import cv2 as cv
 import numpy as np
 
 blue = np.uint8([[[255, 102, 51]]]) # BGR
-hsvTarget = cv.cvtColor(blue, cv.COLOR_BGR2HSV) #convert to HSV
+red = np.uint8([[[0, 0, 255]]])
+pink = np.uint8([[[164, 109, 254]]])
+hsvTarget = cv.cvtColor(pink, cv.COLOR_BGR2HSV) #convert to HSV
 
 h = hsvTarget[0, 0, 0]
 lower = np.array([h-10,50,50])
