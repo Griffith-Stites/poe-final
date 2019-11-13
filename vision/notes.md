@@ -30,3 +30,9 @@
 4. Track some bright object in an image
 
 5. Track a hand
+
+## Questions
+What is HSV color? [Resource](https://www.lifewire.com/what-is-hsv-in-design-1078068)
+* Hue: Color portion of the model
+* Saturation: Amount of grey
+* Value: Brightness value
