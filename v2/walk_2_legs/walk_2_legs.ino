@@ -83,9 +83,6 @@ void loop() {
   delay(1000);
   mag4.write(magOn);
   delay(1000);
-
-  Serial.println("SLIDE LEGS");
-  delay(5000);
  
   // Slide all back
   rotate1.write(fAngle);
