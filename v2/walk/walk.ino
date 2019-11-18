@@ -50,10 +50,11 @@ void setup() {
   mag2.write(magOn);
   mag3.write(magOn);
   mag4.write(magOn);
+
+  Serial.println("Start");
 }
 
 void loop() {
-  Serial.println("start");
   mag1.write(magOff);
   delay(1000);
   rotate1.write(bAngle);
@@ -61,7 +62,6 @@ void loop() {
   mag1.write(magOn);
   delay(1000);
 
-  Serial.println("start");
   mag2.write(magOff);
   delay(1000);
   rotate2.write(fAngle);
@@ -76,7 +76,6 @@ void loop() {
   mag3.write(magOn);
   delay(1000);
 
-  Serial.println("start");
   mag4.write(magOff);
   delay(1000);
   rotate4.write(fAngle);
