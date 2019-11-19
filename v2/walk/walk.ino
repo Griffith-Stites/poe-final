@@ -14,8 +14,8 @@ Servo mag3;
 Servo rotate4;
 Servo mag4;
 
-int bAngle = 120; // backward angle
-int fAngle = 60; // forward angle
+int bAngle = 110; // backward angle
+int fAngle = 70; // forward angle
 
 int magOn = 180; // mag on angle
 int magOff = 0; // mag off angle
@@ -50,46 +50,40 @@ void setup() {
   mag2.write(magOn);
   mag3.write(magOn);
   mag4.write(magOn);
-
-  Serial.println("Start");
 }
 
 void loop() {
+Serial.println("start");
   mag1.write(magOff);
-  delay(1000);
-  rotate1.write(bAngle);
-  delay(1000);
-  mag1.write(magOn);
-  delay(1000);
-
-  mag2.write(magOff);
-  delay(1000);
-  rotate2.write(fAngle);
-  delay(1000);
-  mag2.write(magOn);
-  delay(1000);
-  
-  mag3.write(magOff);
-  delay(1000);
-  rotate3.write(bAngle);
-  delay(1000);
-  mag3.write(magOn);
-  delay(1000);
-
   mag4.write(magOff);
   delay(1000);
-  rotate4.write(fAngle);
+  rotate1.write(bAngle);
+   rotate4.write(fAngle);
   delay(1000);
+  mag1.write(magOn);
   mag4.write(magOn);
   delay(1000);
 
+  Serial.println("start");
+  mag2.write(magOff);
+  mag3.write(magOff);
+  delay(1000);
+  rotate2.write(fAngle);
+  rotate3.write(bAngle);
+  delay(1000);
+  mag2.write(magOn);
+   mag3.write(magOn);
+  delay(1000);
+  
+
   Serial.println("SLIDE LEGS");
-  delay(5000);
+  
  
   // Slide all back
   rotate1.write(fAngle);
-  rotate2.write(bAngle);
   rotate3.write(fAngle);
+  rotate2.write(bAngle);
   rotate4.write(bAngle);
-  delay(3000);
+  delay(2000);
+
 }

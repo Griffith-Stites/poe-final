@@ -14,18 +14,24 @@ Servo mag3;
 Servo rotate4;
 Servo mag4;
 
-int bAngle = -30; // backward angle
-int fAngle = 30; // forward angle
+int bAngle = -20; // backward angle
+int fAngle = 20; // forward angle
 
 int magOn = 180; // mag on angle
 int magOff = 0; // mag off angle
 
+//funcs to convert intuitive angles to servo angles
 int to13w(int angle) {
   return 90 + angle;
 }
-
 int to24w(int angle) {
   return 90 - angle;
+}
+int to14r(int angle) {
+  return angle + 135;
+}
+int to23r(int angle) {
+  return angle + 45;
 }
 
 void setup() {
@@ -57,7 +63,7 @@ void setup() {
 
   mag2.write(magOn);
   mag3.write(magOn);
-  delay(1000);
+  delay(1500);
   Serial.println("Start");
 }
 
@@ -67,25 +73,24 @@ void loop() {
   rotate3.write(to13w(bAngle));
   rotate4.write(to24w(fAngle));
   
-  delay(1000);
+  delay(1500);
   mag1.write(magOn);
   mag4.write(magOn);
-  delay(1000);
+  delay(1500);
   mag2.write(magOff);
   mag3.write(magOff);
-  delay(1000);
+  delay(1500);
   
   rotate1.write(to13w(bAngle));
   rotate2.write(to24w(fAngle));
   rotate3.write(to13w(fAngle));
   rotate4.write(to24w(bAngle));
   
-  delay(1000);
-  mag1.write(magOff);
-  mag4.write(magOff);
-  delay(1000);
+  delay(1500);
   mag2.write(magOn);
   mag3.write(magOn);
-  delay(1000);
-
+  delay(1500);
+  mag1.write(magOff);
+  mag4.write(magOff);
+  delay(1500);
 }
