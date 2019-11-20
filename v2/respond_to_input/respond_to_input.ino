@@ -64,20 +64,26 @@ int to23r(int angle) {
 }
 
 int getUserInput() {
+  Serial.println("in getUserInput");
+  userInput = 0;
   int input = 0;
   while (true) {
     // read the incoming byte:
     int incomingByte = Serial.read();
+    Serial.print("incomingByte is "); Serial.println(incomingByte);
     // leave the loop if return character is received
-    if (incomingByte == -10){
+    if (incomingByte == 10){
       break;
     }
    
     int byteInInt = incomingByte -48;  //-48 converts between ASCII and integers
+    Serial.print("byteInInt is "); Serial.println(byteInInt);
    
     // put previous byte in the 10s place
     userInput = 10*userInput + byteInInt;
+    Serial.print("userInput is "); Serial.println(userInput);
   }
+  Serial.print("Final userInput is "); Serial.println(userInput);
   return userInput;
 }
 
@@ -88,9 +94,7 @@ float getRobotAngle() {
 
   float x_accel = a.acceleration.x;
 
-  Serial.print("x_accel = "); Serial.println(x_accel);
   float x_amt = x_accel/(10);
-  Serial.print("x_amt = "); Serial.println(x_amt);
   if (x_amt < -1) {
     x_amt = -1;
   }
@@ -99,35 +103,37 @@ float getRobotAngle() {
   }
   float current_angle = asin(x_amt)*-180/M_PI;
   Serial.print("current angle = "); Serial.println(current_angle);
-  Serial.println("");
 
   return current_angle;
 }
 
 void setToWalk() {
   mag1.write(magOff);
-    mag3.write(magOff);
-    delay(1000);
-    
-    rotate1.write(to13w(bAngle));
-    rotate3.write(to13w(fAngle));
-    delay(1000);
+  mag4.write(magOff);
+  delay(1000);
+  
+  rotate1.write(to13w(bAngle));
+  rotate4.write(to24w(bAngle));
+  delay(1000);
 
-    mag1.write(magOn);
-    mag3.write(magOn);
-    delay(1000);
-    
-    mag2.write(magOff);
-    mag4.write(magOff);
-    delay(1000);
-    
-    rotate2.write(to24w(bAngle));
-    rotate4.write(to24w(fAngle));
-    delay(1000);
+  mag1.write(magOn);
+  mag4.write(magOn);
+  delay(1000);
+  
+  mag2.write(magOff);
+  mag3.write(magOff);
+  delay(1000);
+  
+  rotate2.write(to24w(fAngle));
+  rotate3.write(to13w(fAngle));
+  delay(1000);
 
-    mag2.write(magOn);
-    mag4.write(magOn);
-    delay(1000);
+  mag2.write(magOn);
+  mag3.write(magOn);
+  delay(1000);
+  mag1.write(magOff);
+  mag4.write(magOff);
+  delay(1000);
 }
 
 void walkStraight(int prevUserInput) {
@@ -153,47 +159,50 @@ void walkStraight(int prevUserInput) {
   rotate2.write(to24w(fAngle));
   rotate3.write(to13w(fAngle));
   rotate4.write(to24w(bAngle));
+  delay(1000);
   
+  mag2.write(magOn);
+  mag3.write(magOn);
   delay(1000);
   mag1.write(magOff);
   mag4.write(magOff);
-  delay(1000);
-  mag2.write(magOn);
-  mag3.write(magOn);
   delay(1000);
 }
 
 void setToRotate(int desired_angle) {
   Serial.println("Attempting to enter starting position");
   int robot_angle = getRobotAngle();
+  Serial.print("robot_angle (in setToRotate) is "); Serial.println(robot_angle);
+  Serial.print("desired_angle is "); Serial.println(desired_angle);
   if (robot_angle < desired_angle) { 
     setAngle = -setAngle; 
   }
+  Serial.print("setAngle is "); Serial.println(setAngle);
   
   mag1.write(magOff);
   delay(500);
-  rotate1.write(to14r(bAngle));
+  rotate1.write(to14r(setAngle));
   delay(1000);
   mag1.write(magOn);
   delay(500);
   
   mag2.write(magOff);
   delay(500);
-  rotate2.write(to23r(bAngle));
+  rotate2.write(to23r(setAngle));
   delay(1000);
   mag2.write(magOn);
   delay(500);
 
   mag3.write(magOff);
   delay(500);
-  rotate3.write(to23r(bAngle));
+  rotate3.write(to23r(setAngle));
   delay(1000);
   mag3.write(magOn);
   delay(500);
 
   mag4.write(magOff);
   delay(500);
-  rotate4.write(to14r(bAngle));
+  rotate4.write(to14r(setAngle));
   delay(1000);
   mag4.write(magOn);
   delay(500);
@@ -207,6 +216,7 @@ void rotate(int desired_angle) {
   Serial.println("Starting rotation");
 
   int robot_angle = getRobotAngle();
+  Serial.print("robot_angle (in rotate) is "); Serial.println(robot_angle);
   int servo_angle = setAngle;
 
   if (robot_angle < desired_angle) {
@@ -252,18 +262,26 @@ void setup() {
   mag3.attach(12);
   mag4.attach(13);
 
-  mag1.write(magOn);
-  mag2.write(magOn);
-  mag3.write(magOn);
-  mag4.write(magOn);
-
   Serial.println("Initializing legs...");
+
+  mag1.write(magOff);
+  mag2.write(magOff);
+  mag3.write(magOff);
+  mag4.write(magOff);
+  delay(1000);
+
   rotate1.write(to14r(0));
   rotate2.write(to23r(0));
   rotate3.write(to23r(0));
   rotate4.write(to14r(0));
   Serial.println("PUT ON WALL");
   delay(3000);
+
+  mag1.write(magOn);
+  mag2.write(magOn);
+  mag3.write(magOn);
+  mag4.write(magOn);
+  delay(1000);
 }
 
 void loop() {
@@ -282,6 +300,7 @@ void loop() {
     case 50:
       Serial.println("Turning to 20 degrees");
       rotate(20);
+      userInput = 0;
     default:
       break;
   }
