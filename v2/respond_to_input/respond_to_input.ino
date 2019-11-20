@@ -35,6 +35,7 @@ int magOff = 0; // mag off angle
 int userInput = 0;
 int prevUserInput = 0;
 int setAngle = -45; // starting angle for rotation
+int movement[] = {0, 0}; //first variable movement type, second amount
 
 void setupSensor() {
   // Try to initialise and warn if we couldn't detect the chip
@@ -66,25 +67,38 @@ int to23r(int angle) {
 int getUserInput() {
   Serial.println("in getUserInput");
   userInput = 0;
-  int input = 0;
+  bool firstLoop = true
   while (true) {
     // read the incoming byte:
     int incomingByte = Serial.read();
     Serial.print("incomingByte is "); Serial.println(incomingByte);
+    
     // leave the loop if return character is received
     if (incomingByte == 10){
+      movement[1] = userInput;
       break;
     }
-   
-    int byteInInt = incomingByte -48;  //-48 converts between ASCII and integers
-    Serial.print("byteInInt is "); Serial.println(byteInInt);
-   
-    // put previous byte in the 10s place
-    userInput = 10*userInput + byteInInt;
-    Serial.print("userInput is "); Serial.println(userInput);
+    if (firstLoop) {
+      firstLoop = false;
+      if (incomingByte == 119) { //"w" for walk
+        movement[0] = 1;
+      } else if (incomingByte == 114) { //"r" for rotate
+        movement[0] = 2;
+      } else {
+        Serial.println("Invalid input. Try again");
+        break;
+      }
+    } else {
+      int byteInInt = incomingByte -48;  //-48 converts between ASCII and integers
+      Serial.print("byteInInt is "); Serial.println(byteInInt);
+     
+      // put previous byte in the 10s place
+      userInput = 10*userInput + byteInInt;
+      Serial.print("userInput is "); Serial.println(userInput);
+    }
   }
   Serial.print("Final userInput is "); Serial.println(userInput);
-  return userInput;
+  return movement;
 }
 
 float getRobotAngle() {
@@ -287,20 +301,20 @@ void setup() {
 void loop() {
   //check for user input
   if (Serial.available() > 0) {
-     userInput = getUserInput();
+     movement = getUserInput();
   }
 
-  switch(userInput) {
+  switch(movement[0]) {
     case 0:
       break;
-    case 100:
+    case 1:
       Serial.println("Walking straight");
       walkStraight(prevUserInput);
       break;
-    case 50:
+    case 2:
       Serial.println("Turning to 20 degrees");
       rotate(20);
-      userInput = 0;
+      movement = [0,0];
     default:
       break;
   }
