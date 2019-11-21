@@ -21,15 +21,17 @@
 
 ## To Do
 
-1. Install library
+1. Install library DONE
 
-2. Run through examples
+2. Run through examples DONE
 
-3. Get live input from laptop
+3. Get live input from laptop DONE
 
-4. Track some bright object in an image
+4. Track some bright object in an image DONE
 
 5. Track a hand
+
+6. Generate a return based on the screen
 
 ## Questions
 What is HSV color? [Resource](https://www.lifewire.com/what-is-hsv-in-design-1078068)
