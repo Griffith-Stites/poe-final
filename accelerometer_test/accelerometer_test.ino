@@ -40,7 +40,7 @@ void setupSensor()
 
 void setup() 
 {
-  Serial.begin(115200);
+  Serial.begin(9600);
 
   while (!Serial) {
     delay(1); // will pause Zero, Leonardo, etc until serial console opens
@@ -73,17 +73,20 @@ void loop()
   float yaccel = a.acceleration.y;
   float zaccel = a.acceleration.z;
 
-  if (yaccel <= -9) {
-    Serial.println("Straight up and down!");
-  } else {
-    if (xaccel <= -9 || xaccel >= 9) {
-      Serial.println("Sideways!");
-    }
-  }
-
-  Serial.print("Turning amount = ");
-  Serial.print(xaccel * 100/9.8);
-  Serial.println("%");
+  Serial.print("xaccel = "); Serial.println(xaccel);
   
-  delay(200);
+  float xamt = xaccel/(10);
+  Serial.print("xamt = "); Serial.println(xamt);
+  if (xamt < -1) {
+    xamt = -1;
+  }
+  if (xamt > 1) {
+    xamt = 1;
+}
+  float current_angle = asin(xamt)*-180/M_PI;
+
+  Serial.print("current angle = "); Serial.println(current_angle);
+  Serial.println("");
+  
+  delay(500);
 }
