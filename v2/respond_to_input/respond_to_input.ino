@@ -35,7 +35,7 @@ int magOff = 0; // mag off angle
 int userInput = 0;
 int prevUserInput = 0;
 int setAngle = -45; // starting angle for rotation
-int movement[] = {0, 0}; //first variable movement type, second amount
+int movement[] = {0,0}; //first variable movement type, second amount
 
 void setupSensor() {
   // Try to initialise and warn if we couldn't detect the chip
@@ -64,10 +64,10 @@ int to23r(int angle) {
   return angle + 45;
 }
 
-int getUserInput() {
+void getUserInput() {
   Serial.println("in getUserInput");
   userInput = 0;
-  bool firstLoop = true
+  bool firstLoop = true;
   while (true) {
     // read the incoming byte:
     int incomingByte = Serial.read();
@@ -75,6 +75,9 @@ int getUserInput() {
     
     // leave the loop if return character is received
     if (incomingByte == 10){
+      Serial.print("movement[0] is "); Serial.println(movement[0]);
+      Serial.print("movement[1] is "); Serial.println(movement[1]);
+      Serial.println("");
       movement[1] = userInput;
       break;
     }
@@ -98,7 +101,6 @@ int getUserInput() {
     }
   }
   Serial.print("Final userInput is "); Serial.println(userInput);
-  return movement;
 }
 
 float getRobotAngle() {
@@ -245,7 +247,7 @@ void rotate(int desired_angle) {
     }
   } else {
     while (robot_angle >= desired_angle) {
-      Serial.print("Servo angle = "); Serial.println(servo_angle);
+
       rotate1.write(to14r(servo_angle));
       rotate2.write(to23r(servo_angle));
       rotate3.write(to23r(servo_angle));
@@ -255,9 +257,11 @@ void rotate(int desired_angle) {
       robot_angle = getRobotAngle();
     }
   }
+  Serial.println("");
   Serial.println("MADE IT!");
   Serial.print("Desired angle = "); Serial.println(desired_angle);
   Serial.print("Current angle = "); Serial.println(robot_angle);
+  Serial.println("");
 }
 
 void setup() {
@@ -301,7 +305,7 @@ void setup() {
 void loop() {
   //check for user input
   if (Serial.available() > 0) {
-     movement = getUserInput();
+     getUserInput();
   }
 
   switch(movement[0]) {
@@ -312,9 +316,11 @@ void loop() {
       walkStraight(prevUserInput);
       break;
     case 2:
-      Serial.println("Turning to 20 degrees");
-      rotate(20);
-      movement = [0,0];
+      Serial.print("Turning to "); Serial.print(movement[1]); 
+      Serial.println("degrees");
+      rotate(movement[1]);
+      movement[0] = 0;
+      movement[1] = 0;
     default:
       break;
   }
