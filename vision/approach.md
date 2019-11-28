@@ -1,6 +1,11 @@
 # Approach
 The approach for code
+1. Color recognition - output should just be white and black
+2. Object recognition - can we look for a rectangle?
+3. Draw around this rectangle
+4. Track the movement of this rectangle
 
+Old:
 1. Image recognition - output should just be the white and black
 2. Blob count - Find the highest concentration of the desired colors
  - This is a form of feature recognition

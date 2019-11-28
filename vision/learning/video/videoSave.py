@@ -3,9 +3,11 @@
 import numpy as np
 import cv2 as cv
 cap = cv.VideoCapture(0)
+cap.set(cv.CAP_PROP_FRAME_WIDTH, 1280)
+cap.set(cv.CAP_PROP_FRAME_HEIGHT, 720)
 # Define the codec and create VideoWriter object
 fourcc = cv.VideoWriter_fourcc(*'mp4v')
-out = cv.VideoWriter('output.mp4', fourcc, 20.0, (640,  480))
+out = cv.VideoWriter('output.mp4', fourcc, 20.0, (1280,  720))
 while cap.isOpened():
     ret, frame = cap.read()
     if not ret:
@@ -24,6 +26,6 @@ cv.destroyAllWindows()
 
 # CODEC INSTALL
 # https://stackoverflow.com/questions/30103077/what-is-the-codec-for-mp4-videos-in-python-opencv
-# sudo pacman -Su ffmpeg x264
+# sudo pacman -Su ffmpeg x264b
 # Had to run as root to save?
 # https://wiki.archlinux.org/index.php/Codecs_and_containers
