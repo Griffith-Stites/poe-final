@@ -18,6 +18,7 @@ upper = np.array([h+10,200,200])
 cap = cv.VideoCapture(0)
 cap.set(cv.CAP_PROP_FRAME_WIDTH, 1280)
 cap.set(cv.CAP_PROP_FRAME_HEIGHT, 720)
+cap.set(cv.CAP_PROP_FPS, 60)
 
 while(1):
     # Take each frame
@@ -27,12 +28,8 @@ while(1):
 
     # Get the color for that frame
     mask = cv.inRange(hsv, lower, upper)
+    cv.imshow('mask',mask) # color layer
 
-    # Bitwise-AND mask and original image
-    res = cv.bitwise_and(frame, frame, mask=mask)
-    cv.imshow('frame',frame) # original
-    cv.imshow('mask',mask) # blue layer
-    cv.imshow('res',res) # white layer
     k = cv.waitKey(5) & 0xFF
     if k == 27:
         break
