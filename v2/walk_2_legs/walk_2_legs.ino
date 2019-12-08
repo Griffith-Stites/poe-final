@@ -63,7 +63,7 @@ void setup() {
 
   mag2.write(magOn);
   mag3.write(magOn);
-  delay(1000);
+  delay(3000);
   Serial.println("Start");
 }
 
@@ -73,24 +73,24 @@ void loop() {
   rotate3.write(to13w(bAngle));
   rotate4.write(to24w(fAngle));
   
-  delay(1000);
+  delay(3000);
   mag1.write(magOn);
   mag4.write(magOn);
-  delay(1000);
+  delay(3000);
   mag2.write(magOff);
   mag3.write(magOff);
-  delay(1000);
+  delay(3000);
   
   rotate1.write(to13w(bAngle));
   rotate2.write(to24w(fAngle));
   rotate3.write(to13w(fAngle));
   rotate4.write(to24w(bAngle));
   
-  delay(1000);
+  delay(3000);
   mag2.write(magOn);
   mag3.write(magOn);
-  delay(1000);
+  delay(3000);
   mag1.write(magOff);
   mag4.write(magOff);
-  delay(1000);
+  delay(3000);
 }

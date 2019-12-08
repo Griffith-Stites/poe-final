@@ -14,11 +14,35 @@ Servo mag3;
 Servo rotate4;
 Servo mag4;
 
-int bAngle = 110; // backward angle
-int fAngle = 70; // forward angle
-
 int magOn = 180; // mag on angle
 int magOff = 0; // mag off angle
+
+//funcs to convert intuitive angles to servo angles
+int to13w(int angle) {
+  return 90 + angle;
+}
+int to24w(int angle) {
+  return 90 - angle;
+}
+int to14r(int angle) {
+  return angle + 135;
+}
+int to23r(int angle) {
+  return angle + 45;
+}
+
+int to1(int angle) {
+  return 45 -6 + angle;
+}
+int to2(int angle) {
+  return 135 + 5 - angle;
+}
+int to3(int angle) {
+  return 135 - 5 + angle;
+}
+int to4(int angle) {
+  return 45 - 7 - angle;
+}
 
 void setup() {
   // initialize serial communications at 9600 bps:
@@ -33,11 +57,18 @@ void setup() {
   mag3.attach(12);
   mag4.attach(13);
 
-  mag1.write(magOn);
-  mag2.write(magOn);
-  mag3.write(magOn);
-  mag4.write(magOn);
+  rotate1.write(to1(0));
+  rotate2.write(to2(0));
+  rotate3.write(to3(0));
+  rotate4.write(to4(0));
 
+  delay(2000);
+
+  Serial.println("Turning all magnets on");
+  mag1.write(magOff);
+  mag2.write(magOff);
+  mag3.write(magOff);
+  mag4.write(magOff);
 }
 
 void loop() {

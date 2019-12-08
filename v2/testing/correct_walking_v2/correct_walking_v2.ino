@@ -34,6 +34,8 @@ int frAngle = rAngle;
 int blAngle = -lAngle;
 int brAngle = -rAngle;
 
+int dt = 2;
+
 int desiredHeading = 0;
 
 int magOn = 180; // mag on angle
@@ -67,7 +69,6 @@ float getRobotAngle() {
     x_amt = 1;
   }
   float current_angle = asin(x_amt)*-180/M_PI;
-  Serial.print("current angle = "); Serial.println(current_angle);
 
   return current_angle;
 }
@@ -84,6 +85,48 @@ int to14r(int angle) {
 }
 int to23r(int angle) {
   return angle + 45;
+}
+
+void setWalkingAngles() {
+  float robotAngle = getRobotAngle();
+  Serial.print("robotAngle is "); Serial.println(robotAngle);
+  Serial.print("desiredHeading is "); Serial.println(desiredHeading);
+  float d = robotAngle - desiredHeading;
+  Serial.print("d is "); Serial.println(d);
+  
+  brAngle = -(30 + d*dt);
+  frAngle = 30 + d*dt;
+  blAngle = -(30-d*dt);
+  flAngle = 30 - d*dt;
+  if (brAngle > 30) {
+    brAngle = 30;
+  }
+  if (frAngle > 30) {
+    frAngle = 30;
+  }
+  if (blAngle > 30) {
+    blAngle = 30;
+  }
+  if (flAngle > 30) {
+    flAngle = 30;
+  }
+
+  if (brAngle < -30) {
+    brAngle = -30;
+  }
+  if (frAngle < -30) {
+    brAngle = -30;
+  }
+  if (blAngle < -30) {
+    blAngle = -30;
+  }
+  if (flAngle < -30) {
+    flAngle = -30;
+  }
+  Serial.print("brAngle = "); Serial.println(brAngle);
+  Serial.print("frAngle = "); Serial.println(frAngle);
+  Serial.print("blAngle = "); Serial.println(blAngle);
+  Serial.print("flAngle = "); Serial.println(flAngle);
 }
 
 void setup() {
@@ -117,63 +160,38 @@ void setup() {
 
   mag2.write(magOn);
   mag3.write(magOn);
-  delay(1000);
+  delay(3000);
   Serial.println("Start");
 }
 
 void loop() {
-  float robotAngle = getRobotAngle();
-  Serial.print("robotAngle is "); Serial.println(robotAngle);
-  float angleDifference = robotAngle - desiredHeading;
-  Serial.print("angleDifference is "); Serial.println(angleDifference);
-  if (angleDifference > 30) {
-    angleDifference = 30;
-  }
-  if (angleDifference < -30) {
-    angleDifference = -30;
-  }
-  if (angleDifference > 0) {
-    Serial.println("Angle difference is greater than 0");
-    Serial.println("Turning left");
-    Serial.println("");
-    frAngle = 30;
-    brAngle = -30;
-    flAngle = 30 - .5*angleDifference;
-    blAngle = .5*angleDifference - 30;
-  }
-  if (angleDifference < 0) {
-    Serial.println("Angle difference is less than 0");
-    Serial.println("Turning right");
-    Serial.println("");
-    frAngle = 30 + .5*angleDifference;
-    brAngle = -(30+.5*angleDifference);
-    flAngle = 30;
-    blAngle = -30;
-  }
-  
+  setWalkingAngles();
+      
   rotate1.write(to13w(flAngle));
   rotate2.write(to24w(brAngle));
   rotate3.write(to13w(blAngle));
   rotate4.write(to24w(frAngle));
   
-  delay(1000);
+  delay(3000);
   mag1.write(magOn);
   mag4.write(magOn);
-  delay(1000);
+  delay(3000);
   mag2.write(magOff);
   mag3.write(magOff);
-  delay(1000);
+  delay(3000);
+
+  setWalkingAngles();
   
   rotate1.write(to13w(blAngle));
   rotate2.write(to24w(frAngle));
   rotate3.write(to13w(flAngle));
   rotate4.write(to24w(brAngle));
   
-  delay(1000);
+  delay(3000);
   mag2.write(magOn);
   mag3.write(magOn);
-  delay(1000);
+  delay(3000);
   mag1.write(magOff);
   mag4.write(magOff);
-  delay(1000);
+  delay(3000);
 }
