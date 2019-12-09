@@ -73,17 +73,19 @@ void loop()
   float yaccel = a.acceleration.y;
   float zaccel = a.acceleration.z;
 
-  Serial.print("xaccel = "); Serial.println(xaccel);
+//  Serial.print("xaccel = "); Serial.println(xaccel);
+  Serial.print("yaccel = "); Serial.println(yaccel);
+//  Serial.print("zaccel = "); Serial.println(zaccel);
   
-  float xamt = xaccel/(9.6);
-  Serial.print("xamt = "); Serial.println(xamt);
-  if (xamt < -1) {
-    xamt = -1;
+  float yamt = yaccel/(9.6);
+  Serial.print("yamt = "); Serial.println(yamt);
+  if (yamt < -1) {
+    yamt = -1;
   }
-  if (xamt > 1) {
-    xamt = 1;
+  if (yamt > 1) {
+    yamt = 1;
 }
-  float current_angle = acos(xamt)*180/M_PI;
+  float current_angle = asin(yamt)*-180/M_PI;
 
   Serial.print("current angle = "); Serial.println(current_angle);
   Serial.println("");

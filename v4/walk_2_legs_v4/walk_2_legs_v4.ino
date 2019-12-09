@@ -14,8 +14,8 @@ Servo mag3;
 Servo rotate4;
 Servo mag4;
 
-int bAngle = -20; // backward angle
-int fAngle = 20; // forward angle
+int bAngle = -25; // backward angle
+int fAngle = 25; // forward angle
 
 int magOn = 180; // mag on angle
 int magOff = 0; // mag off angle
