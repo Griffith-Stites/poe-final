@@ -35,7 +35,8 @@ int blAngle = -max_angle;
 int brAngle = -max_angle;
 
 int desiredHeading = 0;
-char userInput = ' ';
+char userInput = 'o';
+int go = -1; //flag for starting and stopping
 
 int magOn = 180; // mag on angle
 int magOff = 0; // mag off angle
@@ -102,10 +103,10 @@ void setup() {
   mag3.attach(12);
   mag4.attach(13);
 
-  mag1.write(magOff);
-  mag2.write(magOff);
-  mag3.write(magOff);
-  mag4.write(magOff);
+  mag1.write(magOn);
+  mag2.write(magOn);
+  mag3.write(magOn);
+  mag4.write(magOn);
 }
 
 void setWalkingAngles() {
@@ -150,6 +151,40 @@ void setWalkingAngles() {
   Serial.print("flAngle = "); Serial.println(flAngle);
 }
 
+void rotateAll1() {
+  rotate1.write(to1(flAngle));
+  rotate2.write(to2(brAngle));
+  rotate3.write(to3(blAngle));
+  rotate4.write(to4(frAngle));
+  delay(1000);
+}
+
+void rotateAll2() {
+  rotate1.write(to1(blAngle));
+  rotate2.write(to2(frAngle));
+  rotate3.write(to3(flAngle));
+  rotate4.write(to4(brAngle));
+  delay(1000);
+}
+
+void switchMags1() {
+  mag1.write(magOn);
+  mag4.write(magOn);
+  delay(1000);
+  mag2.write(magOff);
+  mag3.write(magOff);
+  delay(1000);
+}
+
+void switchMags2() {
+  mag2.write(magOn);
+  mag3.write(magOn);
+  delay(1000);
+  mag1.write(magOff);
+  mag4.write(magOff);
+  delay(1000);
+}
+
 void getUserInput() {
   if (Serial.available() > 0) {
      // read the incoming byte:
@@ -173,37 +208,58 @@ void getUserInput() {
   Serial.print("userInput = "); Serial.println(userInput);
 }
 
+void updateHeading() {
+  switch(userInput) {
+    case 'o':
+      Serial.println("Doing nothing");
+      break;
+    case ' ':
+      Serial.println("Stopping or starting");
+      go = go*-1;
+      break;
+    case 'w':
+      Serial.println("Walking forwards");
+      break;
+    case 'a':
+      Serial.println("Setting heading left");
+      desiredHeading = desiredHeading - 30;
+      break;
+    case 's': 
+      Serial.println("Walking backwards");
+      break;
+    case 'd':
+      Serial.println("Setting heading right");
+      desiredHeading = desiredHeading + 30;
+      break;
+    default:
+      break;
+  }
+}
+
 void loop() {
 
   getUserInput();
+  updateHeading();
+  Serial.print("desiredHeading = "); Serial.println(desiredHeading);
+  setWalkingAngles(); 
+  
+  if (go == 1) {
+    Serial.println("going");
+    switchMags2();
+    rotateAll1();
+  }
+  userInput = 'o';
 
+  getUserInput();
+  updateHeading();
+  Serial.print("desiredHeading = "); Serial.println(desiredHeading);
   setWalkingAngles();
-  
-  rotate1.write(to1(flAngle));
-  rotate2.write(to2(brAngle));
-  rotate3.write(to3(blAngle));
-  rotate4.write(to4(frAngle));
-  
-  delay(1000);
-  mag1.write(magOn);
-  mag4.write(magOn);
-  delay(1000);
-  mag2.write(magOff);
-  mag3.write(magOff);
-  delay(1000);
 
-  setWalkingAngles();
+  if (go == 1) {
+    Serial.println("going");
+    switchMags1();
+    rotateAll2();
+  }
+  userInput = 'o';
   
-  rotate1.write(to1(blAngle));
-  rotate2.write(to2(frAngle));
-  rotate3.write(to3(flAngle));
-  rotate4.write(to4(brAngle));
-  
-  delay(1000);
-  mag2.write(magOn);
-  mag3.write(magOn);
-  delay(1000);
-  mag1.write(magOff);
-  mag4.write(magOff);
-  delay(1000);
 }

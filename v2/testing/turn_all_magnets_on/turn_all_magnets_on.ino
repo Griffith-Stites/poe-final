@@ -18,30 +18,18 @@ int magOn = 180; // mag on angle
 int magOff = 0; // mag off angle
 
 //funcs to convert intuitive angles to servo angles
-int to13w(int angle) {
-  return 90 + angle;
-}
-int to24w(int angle) {
-  return 90 - angle;
-}
-int to14r(int angle) {
-  return angle + 135;
-}
-int to23r(int angle) {
-  return angle + 45;
-}
 
 int to1(int angle) {
-  return 45 -6 + angle;
+  return 45 -7 + angle;
 }
 int to2(int angle) {
-  return 135 + 5 - angle;
+  return 135 - angle;
 }
 int to3(int angle) {
-  return 135 - 5 + angle;
+  return 135 + 2 + angle;
 }
 int to4(int angle) {
-  return 45 - 7 - angle;
+  return 45 + 2 - angle;
 }
 
 void setup() {

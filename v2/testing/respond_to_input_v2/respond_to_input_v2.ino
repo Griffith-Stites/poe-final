@@ -296,8 +296,8 @@ void loop() {
       break;
     case 2:
       Serial.print("Setting heading left");
-//    case 3: 
-//      Serial.print("Walking backwards");
+    case 3: 
+      Serial.print("Stopping");
     case 4:
       Serial.print("Setting heading right");
     default:
