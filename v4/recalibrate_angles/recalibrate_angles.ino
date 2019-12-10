@@ -23,13 +23,13 @@ int to1(int angle) {
   return 45 -7 + angle;
 }
 int to2(int angle) {
-  return 135 - angle;
+  return 135 - 2 - angle;
 }
 int to3(int angle) {
-  return 135 + 2 + angle;
+  return 135 + 4 + angle;
 }
 int to4(int angle) {
-  return 45 + 2 - angle;
+  return 45 + 4 - angle;
 }
 
 void setup() {
@@ -52,11 +52,11 @@ void setup() {
 
   delay(2000);
 
-  Serial.println("Turning all magnets on");
-  mag1.write(magOff);
-  mag2.write(magOff);
-  mag3.write(magOff);
-  mag4.write(magOff);
+//  Serial.println("Turning all magnets on");
+//  mag1.write(magOff);
+//  mag2.write(magOff);
+//  mag3.write(magOff);
+//  mag4.write(magOff);
 }
 
 void loop() {

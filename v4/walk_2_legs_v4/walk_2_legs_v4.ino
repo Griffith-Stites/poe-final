@@ -14,37 +14,24 @@ Servo mag3;
 Servo rotate4;
 Servo mag4;
 
-int bAngle = -25; // backward angle
-int fAngle = 25; // forward angle
+int bAngle = -23; // backward angle
+int fAngle = 23; // forward angle
 
 int magOn = 180; // mag on angle
 int magOff = 0; // mag off angle
 
 //funcs to convert intuitive angles to servo angles
-//int to13w(int angle) {
-//  return 90 + angle;
-//}
-//int to24w(int angle) {
-//  return 90 - angle;
-//}
-//int to14r(int angle) {
-//  return angle + 135;
-//}
-//int to23r(int angle) {
-//  return angle + 45;
-//}
-
 int to1(int angle) {
   return 45 -7 + angle;
 }
 int to2(int angle) {
-  return 135 + 2 - angle;
+  return 135 - 2 - angle;
 }
 int to3(int angle) {
-  return 135 + 2 + angle;
+  return 135 + 4 + angle;
 }
 int to4(int angle) {
-  return 45 + 2 - angle;
+  return 45 + 4 - angle;
 }
 
 void setup() {
@@ -71,12 +58,12 @@ void setup() {
 //  rotate3.write(to3(fAngle));
 //  rotate4.write(to4(bAngle));
 //
-//  delay(1000);
+//  delay(800);
 //  Serial.println("PUT ON WALL");
 //
 //  mag2.write(magOn);
 //  mag3.write(magOn);
-//  delay(1000);
+//  delay(800);
 //  Serial.println("Start");
 }
 
@@ -86,24 +73,24 @@ void loop() {
   rotate3.write(to3(bAngle));
   rotate4.write(to4(fAngle));
   
-  delay(1000);
+  delay(800);
   mag1.write(magOn);
   mag4.write(magOn);
-  delay(1000);
+  delay(800);
   mag2.write(magOff);
   mag3.write(magOff);
-  delay(1000);
+  delay(800);
   
   rotate1.write(to1(bAngle));
   rotate2.write(to2(fAngle));
   rotate3.write(to3(fAngle));
   rotate4.write(to4(bAngle));
   
-  delay(1000);
+  delay(800);
   mag2.write(magOn);
   mag3.write(magOn);
-  delay(1000);
+  delay(800);
   mag1.write(magOff);
   mag4.write(magOff);
-  delay(1000);
+  delay(800);
 }
