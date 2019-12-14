@@ -1,17 +1,7 @@
-# poe-final
-Repo for the code for our climby boiiii
+# Attractnix
 
-## To Do
-* Calibration script (press a button when the sweeping leg is perp to the robot - then we can specify how much we want toe leg to move on either side of that) - zero should be at 90
+##
+Attractnid is a four legged robot which can scale metal surfaces. It relies on magnets to attach itself to surfaces and looks like a spider. This repo contains firmware for the Arduino which controls the robot. It includes files for different walking motions and types of responses from the robot, but the files of note are:
 
-* Way to track zeros, direction, etc
-
-* Library for new robot. Should be able to take an accelerometer input and turn to an angle.
-
-Turning: Release them, slide them, attach them, move
-
-## Adding Library
-1. Compile Leg library into Zip: "zip -r Leg.zip ./Leg/"
-2. Import into arduino: Sketch -> Include Library -> Add Zip Library
-
-Alternatively, one can manually move the library cpp and h file into the arduino library folder (root-> arduino -> libraries)
+* v4/respond_to_input_v4: Code with the most features: optimized walking speed, user control, and heading correction.
+* v4/recalibrate_angles: A script which will set all legs to the sides. Can be used to calibrate angle conversion functions.
