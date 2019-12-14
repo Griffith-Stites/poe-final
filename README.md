@@ -6,4 +6,4 @@ Attractnid is a four legged robot which can scale metal surfaces. It relies on m
 * v4/respond_to_input_v4: Code with the most features: optimized walking speed, user control, and heading correction.
 * v4/recalibrate_angles: A script which will set all legs to the sides. Can be used to calibrate angle conversion functions.
 
-Project website is [here](https://github.com/Griffith-Stites/poe-final "Attractnid").
+Project website is [here](http://poe.olin.edu/2019/attractnid/index.html "Attractnid").
