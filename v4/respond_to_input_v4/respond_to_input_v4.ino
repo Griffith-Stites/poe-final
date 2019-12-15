@@ -42,16 +42,16 @@ int magOn = 180; // mag on angle
 int magOff = 0; // mag off angle
 
 int to1(int angle) {
-  return 45 -7 + angle;
+  return 45 + 2 + angle;
 }
 int to2(int angle) {
-  return 135 - angle;
+  return 135 - 8 - angle;
 }
 int to3(int angle) {
-  return 135 + 2 + angle;
+  return 135 + 6 + angle;
 }
 int to4(int angle) {
-  return 45 + 2 - angle;
+  return 45 + 0 - angle;
 }
 
 void setupSensor() {
