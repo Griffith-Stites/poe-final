@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <title>Attractnid</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:100,300,400,700|Roboto:300,400,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="fonts/icomoon/style.css">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="css/nouislider.min.css">
+  <link rel="stylesheet" href="css/bootstrap-datetimepicker.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="px-4 navbar navbar-expand-lg navbar-dark bg-secondary">
+    <a class= "navbar-brand" href="index.html">Home</a>
+    <div class="dropdown">
+      <button class="dropbtn">System
+        <i class="fa fa-caret-down"></i>
+      </button>
+      <div class="dropdown-content">
+        <a href="mechanical.html">Mechanical</a>
+        <a href="electrical.html">Electrical</a>
+        <a href="software.html">Software/Firmware</a>
+      </div>
+    </div>
+    <div class="dropdown">
+      <button class="dropbtn">Sprints
+        <i class="fa fa-caret-down"></i>
+      </button>
+      <div class="dropdown-content">
+        <a href="sprint1.html">Sprint 1</a>
+        <a href="sprint2.html">Sprint 2</a>
+        <a href="sprint3.html">Sprint 3</a>
+        <a href="sprint4.html">Sprint 4</a>
+      </div>
+    </div>
+  </div>
+  <div class="site-section">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-md-10 mx-auto text-center align-self-center">
+          <h1 class="title mb-0">Sprint 2</h1>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="site-section">
+    <div class="container">
+      <div class="section-heading mb-5">
+        <h2>Summary</h2>
+      </div>
+      <p>In this sprint our goal was to design a unit that can walk straight up a wall. This was an ambitious goal and we did not quite reach it; though we ended the sprint ready to integrate into a bot that could accomplish this goal. Having such an ambitious goal helped us to learn more about our projects and work through the biggest unkown in our project: sticking to the wall.</p>
+    </div>
+  </div>
+  <div class="site-section bg-light">
+    <div class="container">
+      <div class="section-heading mb-5">
+        <h2>Progress</h2>
+      </div>
+      <div class = "row">
+        <div class="col-lg-6 center">
+          <img src="images/sprints/2/magnet.gif" alt="Sketch Model Bot" class="img-fluid w-80 rounded">
+          <caption><br>A gif of our protoype magnet foot. A servo spins to control a permanent magnet - cancelling the magnetic fields - to detach the foot from the wall.</caption>
+        </div>
+        <div class="col-lg-6 center">
+          <img src="images/sprints/2/magnetConcept.gif" alt="Sketch Model Bot" class="img-fluid w-80 rounded">
+          <caption>Proof of concept of the switching magnetic system. By rotating the top magnet, the magnetic fields are cancelled and the magnets dettach from the wall.</caption>
+        </div>
+      </div>
+      <div class = "row">
+        <p>By the end of Sprint 2, we had a fully funtional prototype of the magnetic foot; addressing the biggest unknown in our project. We tested three different methods for sticking to the wall: switch magnets (what we ended up with), electromagnets, and a ball and magnet system.</p>
+        <p>The switch magnet system uses permanent magnets to attach to the wall. A rotatable permanent magnet (rotated with a servo) allows us to cancel the magnetic fields to detach the foot from the wall</p>
+        <p> The electromagnets were elimanted because they use two much power proportional to the amount of sticking (magnetic) force they provided. This would make it likely impossible to make our robot powered off batteries; which was one of our desires for our final product.</p>
+        <p>The ball and magnet idea was to have a ball with a sliding magnet inside. This ball would be at the end of a tube, which would part of our robot leg. The tube would be pushed against the board when the robot needed to propel itself forward. Then the tube could be pulled off, to allow the ball to roll freely, allowing the servo to slide the leg forward to prepare for another step. A quick sketch model revealed this idea would be more difficult than the switching system, thus it was scrapped.</p>
+      </div>
+      <div class = "row">
+        <div class="col-lg-4 center">
+          <img src="images/sprints/2/magnetBottom.jpg" alt="Bottom of magnet mechanism" class="img-fluid w-80 rounded">
+          <caption>Bottom of the prototype magnetic foot</caption>
+        </div>
+        <div class="col-lg-4 center">
+          <img src="images/sprints/2/magnetTop.jpg" alt="Top of magnetic mechanism" class="img-fluid w-80 rounded">
+          <caption>Top of the prototype magnetic foot, rotating 180 degrees with the servos causes the fields to cancel internally</caption>
+        </div>
+        <div class = "col-lg-4 center">
+          <img src="images/sprints/2/magnetBot.jpg" alt="Bot frame on top of the magnetic mechanism" class="img-fluid w-80 rounded">
+          <caption>One magnetic foot carrying the wait of the frame and motors</caption>
+        </div>
+      </div>
+      <div class = "row">
+        <p>During this sprint, we came up with a more concrete plan to add a sensing system to our robot. We decided to use an accelerometer to allow us to accurately control the angle of our robot. Using the accelerometer, we could determine the actual orientation of the robot. This would allow us to correct the difference between our desired angle and actual angle, counteracting forces such as gravity and friction.</p>
+        <p>Finally, we came up with a new leg design for our robot. The previous design used two motors to manuvere each leg: one for rotation and one to lift the leg off of the wall. We came up with a design to use one servo for rotation and another to control the magnet. The legs would not be lifted off the wall with a servo, and would just be detached using the magnetic system. We also added a slider with springs to keep the legs travel straight.</p>
+      </div>
+      <div class = "row">
+        <div class="col-lg-4 center">
+          <img src="images/sprints/1/bot1.jpg" alt="Bottom of magnet mechanism" class="img-fluid w-80 rounded">
+          <caption>The previous leg system</caption>
+        </div>
+        <div class="col-lg-4 center">
+          <img src="images/sprints/2/sliderPrototype.gif" alt="Slider prototype" class="img-fluid w-80 rounded">
+          <caption>A prototype of the slider mechannism</caption>
+        </div>
+      </div>
+      <div class ="sub-heading">
+        <h3>Learning</h3>
+      </div>
+      <ul class="card-text mb-2">
+        <li>Learned about magnets and using the switching system</li>
+        <li>Learned more about libraries in Arduino by working on the leg control library more and reading through a library written by one of our professors</li>
+      </ul>
+      <div class ="sub-heading">
+        <h3>Decisions</h3>
+        <ul class="card-text mb-2">
+          <li>Will use the magnetic switching mechanism for sticking to the wall</li>
+          <li>Will use a new leg design with one servo for rotation, one servo for magnetic control, and sliders to keep the legs moving straight</li>
+          <li>Will use an accelerometer to as our sensing system to keep the robot moving at the right orientation</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

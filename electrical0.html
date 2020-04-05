@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <title>Attractnid</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:100,300,400,700|Roboto:300,400,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="fonts/icomoon/style.css">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="css/nouislider.min.css">
+  <link rel="stylesheet" href="css/bootstrap-datetimepicker.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="px-4 navbar navbar-expand-lg navbar-dark bg-secondary">
+    <a class= "navbar-brand" href="index.html">Home</a>
+    <div class="dropdown">
+      <button class="dropbtn">System
+        <i class="fa fa-caret-down"></i>
+      </button>
+      <div class="dropdown-content">
+        <a href="mechanical.html">Mechanical</a>
+        <a href="electrical.html">Electrical</a>
+        <a href="software.html">Software/Firmware</a>
+      </div>
+    </div>
+    <div class="dropdown">
+      <button class="dropbtn">Sprints
+        <i class="fa fa-caret-down"></i>
+      </button>
+      <div class="dropdown-content">
+        <a href="sprint1.html">Sprint 1</a>
+        <a href="sprint2.html">Sprint 2</a>
+        <a href="sprint3.html">Sprint 3</a>
+        <a href="sprint4.html">Sprint 4</a>
+      </div>
+    </div>
+  </div>
+  <div class="site-section">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-md-10 mx-auto text-center align-self-center">
+          <h1 class="title mb-0">Electrical Subsystem</h1>
+          <!-- <p><a href="#start" class="btn btn-primary px-4 py-3">More</a></p> -->
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="site-section">
+    <div class="container">
+      <div class="section-heading mb-5">
+        <h2>Electrical Diagram</h2>
+      </div>
+      <img src="images/system/electrical/circuitDiagram.png" alt="Circuit Diagram" class="img-fluid w-80 rounded">
+    </div>
+  </div>
+  <div class="site-section bg-light">
+    <div class="container">
+      <div class="section-heading mb-5">
+        <h2>Accelerometer</h2>
+      </div>
+      <p>To be able to detect its orientation at all times, there is an accelerometer mounted to the robot’s body. It is mounted with its y-axis in line with gravity when the robot is facing up. As such, when the y-axis of the accelerometer reads 9.8 m/s2, the robot must be facing upright, and every other orientation angle is also directly related to an accelerometer reading by the equation:</p>
+      <p class="center">Angle = arcsin(yaccel/9.8)*(-180/pi)</p>
+      <img src="images/system/electrical/accelCurve.png" alt="Acceleration curve with fit line" class="img-fluid w-80 rounded center">
+      <p>With the ability to detect its own orientation, the robot can correct its walk towards whatever heading the user desires. This means the robot can always walk straight in any direction with a control loop, even if the hardware or calibration isn’t perfect.</p>
+    </div>
+  </div>
+  <div class="site-section">
+    <div class="container">
+      <div class="section-heading mb-5">
+        <h2>Battery</h2>
+      </div>
+      <img src="images/system/electrical/battery.png" alt="Battery image" class="center img-fluid w-80 rounded">
+      <p>One of our goals was to have a completely untethered robot. This meant that it had to supply its own power. We were able to accomplish this with a 12V LiPo battery strapped to the belly of the robot. An Arduino Mega runs off of 7 - 12V, while the servos run off 5 - 6.8V. We could safely connect the Arduino to the battery, but 12V directly from the battery would have fried the servos, so we also integrated a power converter between them and the battery. The transformer has variable output voltage, which allowed us to experiment with optimizing the servos’ torque output without putting them in danger of over current.</p>
+      <img src="images/system/electrical/converter.jpg" alt="Converter" class="center img-fluid w-80 rounded">
+      <p>A switch between the converter and the servos allows for the user to easily pause the robot’s movement.</p>
+      <p>One more problem we had to solve was that when the battery was disconnected but the Arduino was powered, back-current caused the Arduino to power the servos. To fix this, there is a diode between the converter and the Arduino.</p>
+    </p>
+  </div>
+</div>
+<div class="site-section bg-light">
+  <div class="container">
+    <div class="section-heading mb-5">
+      <h2>Bluetooth</h2>
+    </div>
+    <img src="images/system/electrical/bluetooth.png" alt="Bluetooth module" class="img-fluid w-80 rounded center">
+    <p>To control our robot remotely we used two DSD Tech HM10 Bluetooth modules. One was wired to secondary sending and receiving serial pins on the Arduino Mega while the other used a micro USB port to connect to a laptop. The two modules were linked when we got them, so when we plugged them in, they connected easily.</p>
+    <p>Navigating the second serial port was a little more difficult. We could upload code to the Arduino via the primary corded serial port but not over Bluetooth. However, the other serial ports don’t have a convenient serial monitor, so debugging and testing was difficult without anywhere to print values to. Eventually, we linked the two ports in a test program so we could send and receive printed data in the serial monitor while actually using the other Bluetooth serial port to communicate with our robot.</p>
+  </div>
+</div>
+</body>
+</html>
